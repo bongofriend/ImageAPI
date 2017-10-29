@@ -1,4 +1,4 @@
-const User = require("./dbconnection").Users;
+const Users = require("./dbconnection").Users;
 const Promise = require("bluebird");
 
 
@@ -7,7 +7,7 @@ var insertUser = function(username,password){
        getUser(username)
        .then((result) => {
            if (result) return resolve(false);
-           User.create({
+           Users.create({
                Username: username,
                Password: password
            })
@@ -19,7 +19,7 @@ var insertUser = function(username,password){
 }
 
 var getUser = function(username,cb){
-    return User.findOne({ where: {Username: username} })
+    return Users.findOne({ where: {Username: username} })
 }
 
 module.exports = {

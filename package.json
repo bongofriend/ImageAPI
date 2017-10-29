@@ -14,6 +14,10 @@
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "mysql2": "^1.4.2",
+    "passport": "^0.4.0",
+    "passport-custom": "^1.0.5",
+    "passport-http": "^0.3.0",
+    "passport-localapikey": "0.0.3",
     "sequelize": "^4.19.0"
   }
 }

@@ -12,7 +12,24 @@ const userSchema = {
     }
 };
 
+const clientSchema = {
+    ClientID: {
+        type: sequelize.STRING,
+        allowNull: false
+    },
+    User: {
+        type: sequelize.STRING,
+        allowNull: false
+    },
+    APIKey: {
+        type: sequelize.STRING,
+        allowNull: false,
+        primaryKey: true
+    }
+}
+
 module.exports = {
-    userSchema: userSchema
+    userSchema: userSchema,
+    clientSchema: clientSchema
 };
 

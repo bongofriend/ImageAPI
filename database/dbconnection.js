@@ -1,7 +1,8 @@
 const Sequelize = require("sequelize");
 const tables = require("./tables");
 const Promise = require("bluebird");
-const bcrypt = require("bcrypt-nodejs");
+const hasher = require("./hash");
+const uuid = require("uuid/v4");
 
 const rounds = 10;
 
@@ -25,37 +26,30 @@ db.authenticate()
 .catch((err) => {console.error("Could not Connect to Database")});
 
 //Define needed Models
-const Users = db.define("User",tables.userSchema,{
+const Users = db.define("Users",tables.userSchema,{
     timestamps: false
 });
 
+const Clients = db.define("Clients",tables.clientSchema,{
+    timestamps: false
+});
 
-Users.beforeCreate(function(Password,options){
-    console.log("hashing password")
-    return encryptData(Password.Password)
+Users.beforeCreate(function(user,options){
+    return hasher.hash(user.Password)
     .then((hash) => {
-        console.log(hash)
-        Password.Password = hash;
+        user.Password = hash;
     })
-    .catch((err) => {console.error("Could not hash")});
+    .catch((err) => {
+        console.error("Error during Hashing");
+    })
+});
+
+
+Clients.beforeCreate(function(client,options){
+    client.APIKey = uuid();
 })
 
-
-
-var encryptData = function(data){
-    return new Promise(function(resolve,reject){
-       bcrypt.genSalt(rounds,function(err,salt){
-           if (err) return reject(err);
-           bcrypt.hash(data,salt,null,function(err,hash){
-               if (err) return reject(err);
-               return resolve(hash);
-           })
-       })
-    })
-}
-
-
-Users.sync()
 module.exports = {
-    Users: Users
+    Users: Users,
+    Clients: Clients
 }

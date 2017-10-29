@@ -17,12 +17,12 @@ class Hasher{
        })
    }
 
-    compare(data,hash,cb){
-        bcrypt.compare(data,hash,function(err,result){
-            if (err){
-                return cb(err,null);
-            }
-            return cb(null,result);
+    compare(data,hash){
+        return new Promise((resolve,reject) => {
+            bcrypt.compare(data,hash,function(err,isMatch){
+                if (err) return reject(err);
+                return resolve(isMatch);
+            })
         })
     }
 }
