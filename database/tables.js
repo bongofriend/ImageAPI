@@ -26,10 +26,37 @@ const clientSchema = {
         allowNull: false,
         primaryKey: true
     }
-}
-
-module.exports = {
-    userSchema: userSchema,
-    clientSchema: clientSchema
 };
 
+const imageSchema = {
+    Title: {
+        type: sequelize.STRING,
+        allowNull: false
+    },
+    Url: {
+        type: sequelize.STRING,
+        allowNull: false,
+        primaryKey: true
+    },
+    Thumbnail: {
+        type: sequelize.STRING,
+        allowNull: false
+    },
+    Source: {
+        type: sequelize.STRING,
+        allowNull: false
+    },
+    Date: {
+        type: sequelize.STRING,
+        allowNull: false
+    },
+    ClientID: {
+        type: sequelize.STRING,
+        allowNull: false
+    }
+}
+module.exports = {
+    userSchema: userSchema,
+    clientSchema: clientSchema,
+    imageSchema: imageSchema
+};
