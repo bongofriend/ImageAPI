@@ -19,7 +19,8 @@ const _config = {
 
 const db = new Sequelize(_config.database, _config.user, _config.password, {
     host: _config.host,
-    dialect: "mysql"
+    dialect: "mysql",
+    logging: false
 });
 
 //Test if db is online
