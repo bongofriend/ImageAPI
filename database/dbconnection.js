@@ -66,7 +66,7 @@ Clients.beforeCreate(function (client, options) {
 
 Images.beforeCreate(function (image, options) {
     return new Promise((resolve, reject) => {
-        image.Date = moment().format("YYYY-MM-DD");
+        image.Date = moment.utc().format("YYYY-MM-DD");
         Clients.findOne({
                 where: {
                     APIKey: options.apikey
