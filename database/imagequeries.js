@@ -30,7 +30,7 @@ const getImages = function (date) {
         where: {
             Date: date
         },
-        attributes: ["Url", "Thumbnail", "Title"]
+        attributes: ["Url", "Thumbnail", "Title","BiggerThumb"]
     })
 }
 
