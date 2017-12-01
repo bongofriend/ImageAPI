@@ -5,9 +5,10 @@ exports.postImage = function (req, res) {
     let title = req.body.title;
     let url = req.body.url;
     let thumb = req.body.thumbnail;
+    let bigger = req.body.bigger;
     let source = req.body.source;
     let key = req.body.apikey;
-    db.insertImage(title, url, thumb, source, key)
+    db.insertImage(title, url, thumb, source, key,bigger)
         .then((isSuccess) => {
             if (!isSuccess) {
                 res.json({

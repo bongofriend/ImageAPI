@@ -1,13 +1,14 @@
 const Images = require("./dbconnection").Images;
 const Promise = require("bluebird");
 
-const insertImage = function (title, url, thumb, source, key) {
+const insertImage = function (title, url, thumb, source, key,bigger) {
     return new Promise((resolve, reject) => {
         Images.create({
                 Title: title,
                 Url: url,
                 Thumbnail: thumb,
                 Source: source,
+                BiggerThumb: bigger,
                 ClientID: "",
                 Date: ""
             }, {

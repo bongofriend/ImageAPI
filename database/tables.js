@@ -50,6 +50,11 @@ const imageSchema = {
         type: sequelize.STRING,
         allowNull: false
     },
+
+    BiggerThumb: {
+        type: sequelize.STRING,
+        allowNull: false
+    },
     ClientID: {
         type: sequelize.STRING,
         allowNull: false
