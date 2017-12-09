@@ -5,6 +5,7 @@ const clientController = require("./routes/client");
 const authController = require("./routes/auth");
 const imageController = require("./routes/image");
 const passport = require("passport");
+const updateloop = require("./scraper/updateloop");
 
 const port = 3000;
 const app = express();
@@ -31,6 +32,7 @@ app.listen(port, function (err) {
     if (err) {
         console.log(err);
     } else {
+        updateloop.initLoop()
         console.log("Server Listening on Port " + port);
     }
 })
