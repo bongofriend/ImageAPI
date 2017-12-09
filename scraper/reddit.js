@@ -7,7 +7,7 @@ const limit = 50
 class RedditScraper{
 
     _buildRedditURL(sub){
-        return "http://reddit.com/r/" + sub + ".json&limit=" + limit
+        return "http://reddit.com/r/" + sub + ".json?limit=" + limit
     }
 
     _getRedditJson(subreddit){
