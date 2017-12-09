@@ -28,8 +28,10 @@ class RedditScraper{
                 if(s.data.url.endsWith(".jpg") || s.data.url.endsWith(".png")){
                     let url = s.data.url
                     let title = s.data.title
-                    let thumb = s.data.preview.images[0].resolutions[1].url
-                    let biggerThumb = s.data.preview.images[0].resolutions[2].url
+		    let temp = s.data.preview.images[0].resolutions[1].url
+                    let thumb = temp.replace(/&amp;/g,"&")
+		    temp = s.data.preview.images[0].resolutions[2].url
+                    let biggerThumb = temp.replace(/&amp;/g,"&")
                     models.push(new ImageModel(title,url,thumb,biggerThumb))
                 }
             }
